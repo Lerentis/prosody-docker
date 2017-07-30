@@ -6,9 +6,9 @@ This is a Prosody Docker image building repository.
 ## Running
 
 Docker images are built off an __Ubuntu 16.04 LTS__ base.
-
+You have to Build this Image locally, as I don't have it on the Docker Hub at the moment!
 ```bash
-docker run -d --name prosody -p 5222:5222 prosody/prosody
+docker built -t lerentis/prosody . && docker run -d --name prosody -p 5222:5222 prosody/prosody
 ```
 
 A user can be created by using environment variables `LOCAL`, `DOMAIN`, and `PASSWORD`. This performs the following action on startup:
@@ -46,8 +46,8 @@ Volumes can be mounted at the following locations for adding in files:
   * Note: This needs to be included in your config file, see http://prosody.im/doc/installing_modules#paths
 
 ### Example
-You have to Build this Image locally, as I don't have it on the Docker Hub at the moment!
-```
+
+```bash
 docker built -t lerentis/prosody . && docker run -d -p 5222:5222 -p 5269:5269 -p 5347:5347 -p 5280:5280 -v /opt/docker/jabber_data/config/:/etc/prosody -v /opt/docker/jabber_data/logs/:/var/log/prosody -v /opt/docker/jabber_data/modules/:/usr/lib/prosody-modules --name jabber-server lerentis/prosody
 ```
 
